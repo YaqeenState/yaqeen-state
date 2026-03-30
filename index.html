@@ -173,7 +173,6 @@
     const teamNumbers = ['201027515725', '201103459305', '201126921018', '201126974773'];
     
     const products = [
-        // قسم الهوديز
         { id: 1, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/BHpL9fyQ/Whats-App-Image-2026-03-29-at-12-41-02-AM-1.jpg" },
         { id: 2, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/N2b1S26h/Whats-App-Image-2026-03-29-at-12-41-02-AM.jpg" },
         { id: 3, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/7dnrNq6k/Whats-App-Image-2026-03-29-at-12-41-01-AM-3.jpg" },
@@ -184,16 +183,14 @@
         { id: 8, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/GvQ74QHg/Whats-App-Image-2026-03-17-at-11-02-23-PM.jpg" },
         { id: 9, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/39w0vwM6/Whats-App-Image-2026-03-17-at-11-02-24-PM-2.jpg" },
         { id: 10, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/bjy0PrRn/Whats-App-Image-2026-03-17-at-11-02-24-PM-1.jpg" },
-        // قسم البناطيل (تم تبديل الأسماء كما طلبت)
         { id: 11, name: "بنطلون يقين سويت بانتس بيج", price: 350, cat: "pants", img: "https://i.ibb.co/6cwNFG5S/Gemini-Generated-Image-qni6kyqni6kyqni6.png" },
         { id: 12, name: "بنطلون يقين سويت بانتس اسود", price: 350, cat: "pants", img: "https://i.ibb.co/gMB9Xgjk/Gemini-Generated-Image-vl4kaovl4kaovl4k.png" },
         { id: 13, name: "بنطلون يقين سويت بانتس ابيض", price: 350, cat: "pants", img: "https://i.ibb.co/JFbyRRY3/Gemini-Generated-Image-v1449dv1449dv144.png" },
-        
-        // قسم التيشرتات
         { id: 23, name: "تيشرت يقين راجلان مضلع - أبيض × أزرق", price: 350, cat: "tshirts", img: "https://i.ibb.co/xSjSkQwL/Whats-App-Image-2026-03-12-at-3-23-44-AM-1.jpg" },
         { id: 20, name: "تيشرت يقين - بني", price: 350, cat: "tshirts", img: "https://i.ibb.co/Q7Yfb2b8/Whats-App-Image-2026-03-12-at-3-23-42-AM.jpg" },
         { id: 19, name: "تيشرت يقين - أسود", price: 350, cat: "tshirts", img: "https://i.ibb.co/ds9r9dqt/Whats-App-Image-2026-03-11-at-1-17-35-AM-2.jpg" }
     ];
+
     let cart = [];
     let selectedMethod = '';
 
@@ -223,6 +220,33 @@
         document.getElementById('cartContent').innerHTML = cart.map(item => { total += item.price; return `<div class="cart-item"><div>${item.name}<br><small>المقاس: ${item.size}</small></div><div>${item.price} ج.م</div></div>`; }).join('');
         document.getElementById('totalPrice').innerText = total + ' ج.م';
         document.getElementById('cartBadge').innerText = cart.length;
+    }
+
+    // الدالة المحدثة لإرسال روابط الصور مع الطلب
+    function sendOrder(phone) {
+        if (cart.length === 0) return;
+
+        // تجهيز المنتجات مع صورة كل منتج
+        let items = cart.map((item, i) => {
+            return `${i + 1}- ${item.name} (${item.size})\n📸 رابط الصورة: ${item.img}`;
+        }).join('\n\n');
+
+        let total = cart.reduce((a, b) => a + b.price, 0);
+        let methodText = (selectedMethod === 'wallet') ? 'فودافون كاش (تم التحويل)' : 'الدفع عند الاستلام';
+        
+        let msg = `طلب جديد من YAQEEN STATE 🛍️\n\n`;
+        msg += `--- المنتجات ---\n${items}\n\n`;
+        msg += `💰 الإجمالي: ${total} ج.م\n`;
+        msg += `💳 طريقة الدفع: ${methodText}\n\n`;
+        msg += `بانتظار تأكيد الطلب..`;
+
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        
+        cart = []; 
+        updateUI(); 
+        closeModal(); 
+        document.getElementById('drawer').classList.remove('open'); 
+        document.getElementById('overlay').style.display = 'none';
     }
 
     function selectPayment(m) {
@@ -257,15 +281,6 @@
         document.getElementById('step1').style.display='block';
         document.getElementById('phoneSelection').style.display='none';
         if(selectedMethod && selectedMethod !== 'contact') document.getElementById('transferAlert').style.display = 'block';
-    }
-
-    function sendOrder(phone) {
-        let items = cart.map((item, i) => `${i+1}- ${item.name} (${item.size})`).join('\n');
-        let total = cart.reduce((a, b) => a + b.price, 0);
-        let methodText = (selectedMethod === 'wallet') ? 'فودافون كاش (تم التحويل)' : 'الدفع عند الاستلام';
-        let msg = `طلب جديد من YAQEEN STATE:\n\nالمنتجات:\n${items}\n\nالإجمالي: ${total} ج.م\nطريقة الدفع: ${methodText}`;
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        cart=[]; updateUI(); closeModal(); document.getElementById('drawer').classList.remove('open'); document.getElementById('overlay').style.display='none';
     }
 
     function filterProducts(cat, event) {
