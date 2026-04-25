@@ -83,7 +83,7 @@
     <div class="container">
         <div class="nav-bar">
             <a href="#" class="logo">
-                <img src="https://i.ibb.co/zhdgrLg7/Whats-App-Image-2026-02-28-at-12-06.gif" alt="Yaqeen Logo" class="logo-img">
+                <img src="https://i.ibb.co/x8YGR8yt/671067920-18043463675599158-3772416809807385624-n.jpg" alt="Yaqeen Logo" class="logo-img">
                 <div class="logo-text"><h1>يقين</h1><span>YAQEEN STATE</span></div>
             </a>
             <div class="cart-trigger" id="openCart">
@@ -98,7 +98,8 @@
         <button class="filter-btn active" onclick="filterProducts('all', event)">الكل</button>
         <button class="filter-btn" onclick="filterProducts('hoodies', event)">هوديز</button>
         <button class="filter-btn" onclick="filterProducts('pants', event)">بناطيل</button>
-        <button class="filter-btn" onclick="filterProducts('tshirts', event)">تيشرتات</button>
+        <button class="filter-btn" onclick="filterProducts('summer', event)">تيشرتات صيفي</button>
+        <button class="filter-btn" onclick="filterProducts('tshirts', event)">تيشرتات أخرى</button>
         <button class="contact-trigger-btn" onclick="openContactModal()">تواصل معنا <i class="fab fa-whatsapp"></i></button>
     </div>
 </div>
@@ -106,7 +107,8 @@
 <main class="container">
     <section class="section" data-cat="hoodies"><div class="section-header"><h2>الهوديز / Hoodies</h2></div><div class="products-grid" id="container-hoodies"></div></section>
     <section class="section" data-cat="pants"><div class="section-header"><h2>البناطيل / Pants</h2></div><div class="products-grid" id="container-pants"></div></section>
-    <section class="section" data-cat="tshirts"><div class="section-header"><h2>التيشرتات / T-Shirts</h2></div><div class="products-grid" id="container-tshirts"></div></section>
+    <section class="section" data-cat="summer"><div class="section-header"><h2>تيشرتات صيفي / Summer T-Shirts</h2></div><div class="products-grid" id="container-summer"></div></section>
+    <section class="section" data-cat="tshirts"><div class="section-header"><h2>تيشرتات أخرى / T-Shirts</h2></div><div class="products-grid" id="container-tshirts"></div></section>
 </main>
 
 <div class="modal" id="paymentModal">
@@ -143,14 +145,14 @@
 <footer>
     <div class="container">
         <div class="footer-logo">
-            <img src="https://i.ibb.co/zhdgrLg7/Whats-App-Image-2026-02-28-at-12-06.gif" alt="Yaqeen Logo">
+            <img src="https://i.ibb.co/x8YGR8yt/671067920-18043463675599158-3772416809807385624-n.jpg alt="Yaqeen Logo">
             <h2 style="font-weight: 900; letter-spacing: 2px;">YAQEEN STATE</h2>
             <p style="color: var(--brand-gold);">الثقة في الأداء.. اليقين في المظهر</p>
         </div>
         <div class="footer-socials">
             <a href="https://www.facebook.com/profile.php?id=61582222807937" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/yaqeen.state/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@yaqeen.state0" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.tiktok.com/@yq.state?_r=1&_t=ZS-95q0VIhPCl7" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
         <div class="footer-copy">&copy; 2026 YAQEEN Official.</div>
     </div>
@@ -173,20 +175,27 @@
     const teamNumbers = ['201027515725', '201103459305', '201126921018', '201126974773'];
     
     const products = [
-        { id: 1, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/BHpL9fyQ/Whats-App-Image-2026-03-29-at-12-41-02-AM-1.jpg" },
+        // تيشرت صيفي (تم تغيير القسم لـ summer لضمان الظهور)
+        { id: 1, name: "تيشرت يقين صيفي ديزاين 1", price: 500, cat: "summer", img: "https://i.ibb.co/bg31zZCc/Whats-App-Image-2026-04-24-at-6-09-15-PM.jpg" },
+        { id: 7, name: "تيشرت يقين صيفي ديزاين2 أبيض", price: 500, cat: "summer", img: "https://i.ibb.co/RLH5s83/Whats-App-Image-2026-04-24-at-6-09-30-PM.jpg"},
+        { id: 8, name: "تيشرت يقين صيفي ديزاين 2 أسود ", price: 500, cat: "summer", img: "https://i.ibb.co/N2mNsMXW/Whats-App-Image-2026-04-24-at-6-09-15-PM-2.jpg" },
+        { id: 10, name: "تيشرت يقين صيفي ديزاين 2 رمادي", price: 500, cat: "summer", img: "https://i.ibb.co/kgbLK6PN/Whats-App-Image-2026-04-24-at-6-09-15-PM-1.jpg"},
+        { id: 9, name: "تيشرت يقين ساده أبيض", price: 450, cat: "summer", img: "https://i.ibb.co/BVTg790w/Gemini-Generated-Image-ocyn92ocyn92ocyn.png"},
+         { id: 13, name: "تيشرت يقين ساده أسود", price: 450, cat: "summer", img: "https://i.ibb.co/sdSXfGDV/Gemini-Generated-Image-fabo7mfabo7mfabo.png"},
+        
+        
         { id: 2, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/N2b1S26h/Whats-App-Image-2026-03-29-at-12-41-02-AM.jpg" },
         { id: 3, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/7dnrNq6k/Whats-App-Image-2026-03-29-at-12-41-01-AM-3.jpg" },
         { id: 4, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/chJkfyGY/Whats-App-Image-2026-03-29-at-12-41-01-AM-2.jpg" },
         { id: 5, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/7dNBr0Vf/Whats-App-Image-2026-03-29-at-12-41-01-AM-1.jpg" },
         { id: 6, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/TBLsj4gS/Whats-App-Image-2026-03-29-at-12-41-01-AM.jpg" },
-        { id: 7, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/DD8tFkzm/Whats-App-Image-2026-03-15-at-2-45-38-AM.jpg" },
-        { id: 8, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/GvQ74QHg/Whats-App-Image-2026-03-17-at-11-02-23-PM.jpg" },
-        { id: 9, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/39w0vwM6/Whats-App-Image-2026-03-17-at-11-02-24-PM-2.jpg" },
-        { id: 10, name: "هودي يقين", price: 650, cat: "hoodies", img: "https://i.ibb.co/bjy0PrRn/Whats-App-Image-2026-03-17-at-11-02-24-PM-1.jpg" },
+        
+        // بناطيل
         { id: 11, name: "بنطلون يقين سويت بانتس بيج", price: 350, cat: "pants", img: "https://i.ibb.co/6cwNFG5S/Gemini-Generated-Image-qni6kyqni6kyqni6.png" },
         { id: 12, name: "بنطلون يقين سويت بانتس اسود", price: 350, cat: "pants", img: "https://i.ibb.co/gMB9Xgjk/Gemini-Generated-Image-vl4kaovl4kaovl4k.png" },
-        { id: 13, name: "بنطلون يقين سويت بانتس ابيض", price: 350, cat: "pants", img: "https://i.ibb.co/JFbyRRY3/Gemini-Generated-Image-v1449dv1449dv144.png" },
-        { id: 23, name: "تيشرت يقين راجلان مضلع - أبيض × أزرق", price: 350, cat: "tshirts", img: "https://i.ibb.co/xSjSkQwL/Whats-App-Image-2026-03-12-at-3-23-44-AM-1.jpg" },
+        
+        // تيشرتات أخرى
+        { id: 23, name: "تيشرت يقين راجلان مضلع", price: 350, cat: "tshirts", img: "https://i.ibb.co/xSjSkQwL/Whats-App-Image-2026-03-12-at-3-23-44-AM-1.jpg" },
         { id: 20, name: "تيشرت يقين - بني", price: 350, cat: "tshirts", img: "https://i.ibb.co/Q7Yfb2b8/Whats-App-Image-2026-03-12-at-3-23-42-AM.jpg" },
         { id: 19, name: "تيشرت يقين - أسود", price: 350, cat: "tshirts", img: "https://i.ibb.co/ds9r9dqt/Whats-App-Image-2026-03-11-at-1-17-35-AM-2.jpg" }
     ];
@@ -195,11 +204,28 @@
     let selectedMethod = '';
 
     function render() {
+        // تنظيف الجريدات
         document.querySelectorAll('.products-grid').forEach(g => g.innerHTML = '');
+        
         products.forEach(p => {
             const grid = document.getElementById(`container-${p.cat}`);
-            if(!grid) return;
-            grid.innerHTML += `<div class="product-card"><div class="p-image"><img src="${p.img}"></div><div class="p-info"><div class="p-name">${p.name}</div><div class="p-price">${p.price} ج.م</div><select class="size-selector" id="size-${p.id}"><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="2XL">2XL</option></select><button class="add-btn" onclick="addToCart(${p.id})">إضافة للسلة +</button></div></div>`;
+            if(grid) {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="p-image"><img src="${p.img}"></div>
+                        <div class="p-info">
+                            <div class="p-name">${p.name}</div>
+                            <div class="p-price">${p.price} ج.م</div>
+                            <select class="size-selector" id="size-${p.id}">
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="2XL">2XL</option>
+                            </select>
+                            <button class="add-btn" onclick="addToCart(${p.id})">إضافة للسلة +</button>
+                        </div>
+                    </div>`;
+            }
         });
         
         document.getElementById('orderPhoneNumbers').innerHTML = teamNumbers.map(num => `
@@ -217,35 +243,23 @@
 
     function updateUI() {
         let total = 0;
-        document.getElementById('cartContent').innerHTML = cart.map(item => { total += item.price; return `<div class="cart-item"><div>${item.name}<br><small>المقاس: ${item.size}</small></div><div>${item.price} ج.م</div></div>`; }).join('');
+        document.getElementById('cartContent').innerHTML = cart.map(item => { 
+            total += item.price; 
+            return `<div class="cart-item"><div>${item.name}<br><small>المقاس: ${item.size}</small></div><div>${item.price} ج.م</div></div>`; 
+        }).join('');
         document.getElementById('totalPrice').innerText = total + ' ج.م';
         document.getElementById('cartBadge').innerText = cart.length;
     }
 
-    // الدالة المحدثة لإرسال روابط الصور مع الطلب
     function sendOrder(phone) {
         if (cart.length === 0) return;
-
-        // تجهيز المنتجات مع صورة كل منتج
-        let items = cart.map((item, i) => {
-            return `${i + 1}- ${item.name} (${item.size})\n📸 رابط الصورة: ${item.img}`;
-        }).join('\n\n');
-
+        let items = cart.map((item, i) => `${i + 1}- ${item.name} (${item.size})\n📸 الرابط: ${item.img}`).join('\n\n');
         let total = cart.reduce((a, b) => a + b.price, 0);
-        let methodText = (selectedMethod === 'wallet') ? 'فودافون كاش (تم التحويل)' : 'الدفع عند الاستلام';
-        
-        let msg = `طلب جديد من YAQEEN STATE 🛍️\n\n`;
-        msg += `--- المنتجات ---\n${items}\n\n`;
-        msg += `💰 الإجمالي: ${total} ج.م\n`;
-        msg += `💳 طريقة الدفع: ${methodText}\n\n`;
-        msg += `بانتظار تأكيد الطلب..`;
-
+        let methodText = (selectedMethod === 'wallet') ? 'فودافون كاش' : 'الدفع عند الاستلام';
+        let msg = `طلب جديد من YAQEEN STATE 🛍️\n\n--- المنتجات ---\n${items}\n\n💰 الإجمالي: ${total} ج.م\n💳 الدفع: ${methodText}`;
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        
-        cart = []; 
-        updateUI(); 
-        closeModal(); 
-        document.getElementById('drawer').classList.remove('open'); 
+        cart = []; updateUI(); closeModal();
+        document.getElementById('drawer').classList.remove('open');
         document.getElementById('overlay').style.display = 'none';
     }
 
@@ -258,7 +272,6 @@
 
     function openContactModal() {
         selectedMethod = 'contact';
-        const modal = document.getElementById('paymentModal');
         document.getElementById('modalMainTitle').innerText = "تواصل معنا عبر واتساب";
         document.getElementById('paymentOptionsGroup').style.display = 'none';
         document.getElementById('contactOptionsGroup').style.display = 'block';
@@ -267,7 +280,7 @@
                 <span>تواصل مع ${num.replace('20', '0')}</span><i class="fab fa-whatsapp"></i>
             </div>
         `).join('');
-        modal.style.display = 'flex';
+        document.getElementById('paymentModal').style.display = 'flex';
     }
     
     function handleNextStep() {
@@ -285,7 +298,7 @@
 
     function filterProducts(cat, event) {
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        if(event && event.target) event.target.classList.add('active');
+        if(event) event.target.classList.add('active');
         document.querySelectorAll('.section').forEach(sec => { 
             sec.style.display = (cat === 'all' || sec.getAttribute('data-cat') === cat) ? 'block' : 'none'; 
         });
@@ -297,10 +310,8 @@
         document.getElementById('phoneSelection').style.display='none';
         document.getElementById('paymentOptionsGroup').style.display = 'block';
         document.getElementById('contactOptionsGroup').style.display = 'none';
-        document.getElementById('modalMainTitle').innerText = "اختر وسيلة الدفع";
         selectedMethod = '';
         document.getElementById('transferAlert').style.display = 'none';
-        document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
     }
 
     document.getElementById('checkoutBtn').onclick = () => { 
